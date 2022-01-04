@@ -8,15 +8,15 @@ import { TopComponent } from './top/top.component';
 const routes: Routes = [
   {
     path: '',
-    component: PageComponent
-  },
-  {
-    path: 'top',
-    component: TopComponent
+    component: PageComponent,
   },
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'top',
+    component: TopComponent
   }
 ];
 

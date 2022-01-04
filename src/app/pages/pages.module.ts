@@ -11,7 +11,7 @@ import { PageComponent } from './page.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, TopComponent, PageComponent],
+  declarations: [HomeComponent, PageComponent, TopComponent],
   imports: [
     CommonModule,
     IonicModule,

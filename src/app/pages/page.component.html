@@ -1,23 +1,24 @@
-<ion-menu contentId="main-content" type="overlay">
-    <ion-content>
-        <ion-list id="inbox-list">
-            <ion-list-header>Hola Sthefano</ion-list-header>
-            <ion-note>sthefanopoli@gmail.com</ion-note>
-
-            <ion-menu-toggle auto-hide="false">
-                <ion-item routerDirection="root" routerLink="home" lines="none" detail="false" routerLinkActive="selected">
-                    <ion-icon slot="start" name="home-outline"></ion-icon>
-                    <ion-label>Home</ion-label>
-                </ion-item>
-            </ion-menu-toggle>
-            <ion-menu-toggle auto-hide="false">
-                <ion-item routerDirection="root" routerLink="top" lines="none" detail="false" routerLinkActive="selected">
-                    <ion-icon slot="start" name="star-outline"></ion-icon>
-                    <ion-label>Top 100</ion-label>
-                </ion-item>
-            </ion-menu-toggle>
-        </ion-list>
-    </ion-content>
-</ion-menu>
-<h2>Aca la data</h2>
-<ion-router-outlet id="main-content"></ion-router-outlet>
+<div>
+    <ion-card (click)="navigate('pages/home')">
+        <ion-card-header>
+            <ion-card-subtitle>Home
+                <ion-icon name="home-outline"></ion-icon>
+            </ion-card-subtitle>
+            <ion-card-title>Esta carta te llevara al home</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+    </ion-card>
+    <ion-card (click)="navigate('pages/top')">
+        <ion-card-header>
+            <ion-card-subtitle class="ion-text-start">Top
+                <ion-icon name="star-outline"></ion-icon>
+            </ion-card-subtitle>
+            <ion-card-title>Esta carta te llevara al Top 100 de los vinos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+    </ion-card>
+</div>
