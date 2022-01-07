@@ -1,0 +1,11 @@
+{
+    "/try": {
+        "target": "https://microservicio-polisthefano.cloud.okteto.net/",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/try": ""
+        }
+    }
+}
