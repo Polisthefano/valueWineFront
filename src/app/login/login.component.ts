@@ -20,7 +20,13 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['registro']);
   }
   login() {
-    console.log(this.f.value);
-    this.mainService.login()
+    if (this.f.invalid) {
+      return
+    }
+    let bodyRequest = { "email": this.f.value.email, "password": this.f.value.pass }
+    this.mainService.login(bodyRequest).then(resp => {
+      console.log(resp);
+
+    })
   }
 }

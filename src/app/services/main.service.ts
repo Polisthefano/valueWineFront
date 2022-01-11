@@ -24,7 +24,12 @@ export class MainService {
       return of(err)
     }))
   }
-  login() {
-    return this.http.get(`${this.url}usuario/loginUsuario`)
+  login(bodyRequest) {
+
+    return this.http.post(`${this.url}usuario/loginUsuario`, bodyRequest).toPromise()
+  }
+  createAccount(bodyRequest) {
+
+    return this.http.put(`${this.url}usuario/insertUsuario`, bodyRequest).toPromise()
   }
 }
