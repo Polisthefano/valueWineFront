@@ -1,5 +1,32 @@
 <div>
-    <ion-card (click)="navigate('pages/home')">
+    <ion-menu side="start" contentId="main">
+        <ion-header>
+            <ion-toolbar class="bg-black txt-ligth">
+                <ion-title>Bienvenido</ion-title>
+            </ion-toolbar>
+            <ion-row class="mt-2 alignContent mb-2 txt-ligth ">
+                <h6>{{usuario.Email}}</h6>
+            </ion-row>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <ion-item class="txt-ligth">Perfil
+                    <ion-icon class="ms-2" name="person-outline"></ion-icon>
+                </ion-item>
+                <ion-item class="txt-ligth" (click)="cerrarSesion()">Cerrar Sesion
+                    <ion-icon class="ms-2" name="close-circle-outline"></ion-icon>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button color="dark"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-router-outlet id="main"></ion-router-outlet>
+    <ion-card (click)="navigate( 'pages/home')">
         <ion-card-header>
             <ion-card-subtitle>Home
                 <ion-icon name="home-outline"></ion-icon>
@@ -10,10 +37,10 @@
             Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
         </ion-card-content>
     </ion-card>
-    <ion-card (click)="navigate('pages/top')">
+    <ion-card (click)="navigate( 'pages/top')">
         <ion-card-header>
             <ion-card-subtitle class="ion-text-start">Top
-                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline "></ion-icon>
             </ion-card-subtitle>
             <ion-card-title>Esta carta te llevara al Top 100 de los vinos</ion-card-title>
         </ion-card-header>
@@ -21,4 +48,5 @@
             Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
         </ion-card-content>
     </ion-card>
+
 </div>

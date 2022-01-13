@@ -36,6 +36,14 @@ export class LoginComponent implements OnInit, OnDestroy {
       })
       this.isLoading = false
       this.redirect('pages')
+    }).catch(err => {
+      let copy = ''
+      if (err.error.code == 404) {
+        copy = 'Usuario o contraseña incorrectos'
+      }
+      this.toastService.presentToast(copy, 'toastError').then(resp => {
+      })
+      this.isLoading = false
     })
   }
 }

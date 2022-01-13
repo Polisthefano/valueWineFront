@@ -6,7 +6,6 @@
 }
 
 .alignContent {
-    color: wheat;
     justify-content: center;
 }
 
@@ -35,6 +34,16 @@
 
 .toastSucess {
     --background: green;
+}
+
+ion-menu {
+    --ion-background-color: var(--valuewine-color-primary);
+    ion-item {
+        --background: var(--valuewine-color-primary);
+    }
+    ion-toolbar {
+        --background: var(--valuewine-color-primary);
+    }
 }
 
 @keyframes rotation {

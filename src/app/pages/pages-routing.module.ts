@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '',
     component: PageComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'home',

@@ -15,6 +15,9 @@ export class MainService {
 
   checkSesion() {
     let usuario = this.sessionStorageGet('user')
+    if (!usuario) {
+      usuario = ''
+    }
     const headers: any = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${usuario.Token}`
@@ -25,8 +28,10 @@ export class MainService {
       this.sessionStorageSet('user', usuario)
       return true
     }), catchError(err => {
-      this.toastService.presentToast(`${err.error.msg}`, 'toastError').then(resp => {
-      })
+      if (err.error.code == 518) {
+        this.toastService.presentToast(`Sesion Expirada`, 'toastError').then(resp => {
+        })
+      }
       return of(err)
     }))
   }
@@ -43,5 +48,8 @@ export class MainService {
   }
   sessionStorageGet(key: string) {
     return JSON.parse(sessionStorage.getItem('user'))
+  }
+  deleteSession() {
+    sessionStorage.removeItem('user')
   }
 }
