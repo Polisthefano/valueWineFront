@@ -73,7 +73,7 @@
             </ion-grid>
             <ion-grid>
                 <ion-row class="alignContent">
-                    <ion-button *ngIf="!isLoading" class="pointer" (click)="createAccount()" [disabled]="f.invalid" color="light">Crear Cuenta
+                    <ion-button *ngIf="!isLoading" class="pointer" color="light" (click)="createAccount()" [disabled]="f.invalid">Crear Cuenta
                         <ion-icon class="ms-2" name="save-outline"></ion-icon>
                     </ion-button>
                     <ion-button *ngIf="isLoading" disabled color="light">
@@ -87,7 +87,7 @@
                 <h4>Ya tenes una cuenta?</h4>
             </ion-row>
             <ion-row class="alignContent mb-4">
-                <ion-badge color="primary" (click)="redirectToLogin()">Inicia Sesion</ion-badge>
+                <ion-badge class="badge pointer" (click)="redirectToLogin()">Inicia Sesion</ion-badge>
             </ion-row>
         </ion-grid>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from '../models/usuario.model';
 import { MainService } from '../services/main.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { MainService } from '../services/main.service';
   styleUrls: ['./page.component.scss'],
 })
 export class PageComponent implements OnInit {
-  usuario: any
+  usuario: Usuario
   constructor(private router: Router, private mainService: MainService) {
     this.usuario = this.mainService.sessionStorageGet('user')
   }

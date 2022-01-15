@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
+import { ProductorGuard } from '../guards/productor.guard';
 import { HomeComponent } from './home/home.component';
 import { PageComponent } from './page.component';
 import { TopComponent } from './top/top.component';
+import { VinosComponent } from './vinos/vinos.component';
 
 
 const routes: Routes = [
@@ -21,6 +23,11 @@ const routes: Routes = [
     path: 'top',
     component: TopComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'vinos',
+    loadChildren: () => import('./vinos/vinos.module').then(m => m.VinosModule),
+    canActivate: [ProductorGuard]
   }
 ];
 

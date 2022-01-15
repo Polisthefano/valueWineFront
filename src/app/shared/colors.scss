@@ -5,3 +5,7 @@
 .bg-black {
     --ion-background-color: var(--valuewine-color-secondary);
 }
+
+.bg-grey {
+    --background: var(--valuewine-color-other) !important;
+}

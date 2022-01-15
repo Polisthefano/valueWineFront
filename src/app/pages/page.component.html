@@ -19,14 +19,14 @@
             </ion-list>
         </ion-content>
     </ion-menu>
-    <ion-toolbar>
+    <ion-toolbar class="bg-grey">
         <ion-buttons slot="start">
             <ion-menu-button color="dark"></ion-menu-button>
         </ion-buttons>
     </ion-toolbar>
 
     <ion-router-outlet id="main"></ion-router-outlet>
-    <ion-card (click)="navigate( 'pages/home')">
+    <ion-card (click)="navigate( 'pages/home')" class="card">
         <ion-card-header>
             <ion-card-subtitle>Home
                 <ion-icon name="home-outline"></ion-icon>
@@ -37,12 +37,23 @@
             Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
         </ion-card-content>
     </ion-card>
-    <ion-card (click)="navigate( 'pages/top')">
+    <ion-card (click)="navigate('pages/top')" class="card" *ngIf="usuario.Rol==0">
         <ion-card-header>
             <ion-card-subtitle class="ion-text-start">Top
-                <ion-icon name="star-outline "></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
             </ion-card-subtitle>
             <ion-card-title>Esta carta te llevara al Top 100 de los vinos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+    </ion-card>
+    <ion-card (click)="navigate('pages/vinos')" class="card" *ngIf="usuario.Rol==1">
+        <ion-card-header>
+            <ion-card-subtitle class="ion-text-start">Tus Vinos
+                <ion-icon name="star-outline"></ion-icon>
+            </ion-card-subtitle>
+            <ion-card-title>Esta carta te llevara a tus vinos</ion-card-title>
         </ion-card-header>
         <ion-card-content>
             Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.

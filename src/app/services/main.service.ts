@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastService } from './toast.service';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class MainService {
   url = environment.urlBase;
   constructor(private http: HttpClient, private toastService: ToastService) { }
 
-  checkSesion() {
-    let usuario = this.sessionStorageGet('user')
+  checkSesion(productor?: boolean) {
+    let usuario: Usuario | any = this.sessionStorageGet('user')
     if (!usuario) {
       usuario = ''
     }
@@ -23,10 +24,20 @@ export class MainService {
       'Authorization': `Bearer ${usuario.Token}`
     })
     return this.http.get(`${this.url}usuario/checkSesion`, { headers: headers }).pipe(map((user: any) => {
-      console.log('aca se pide el token');
       usuario.Token = user.token
       this.sessionStorageSet('user', usuario)
-      return true
+      if (productor) {
+        if (usuario.Rol == 1) {
+          return true
+        }
+        else {
+          return of('err')
+        }
+      }
+      else {
+        return true
+      }
+
     }), catchError(err => {
       if (err.error.code == 518) {
         this.toastService.presentToast(`Sesion Expirada`, 'toastError').then(resp => {
@@ -47,7 +58,7 @@ export class MainService {
     sessionStorage.setItem(key, JSON.stringify(value))
   }
   sessionStorageGet(key: string) {
-    return JSON.parse(sessionStorage.getItem('user'))
+    return JSON.parse(sessionStorage.getItem(key))
   }
   deleteSession() {
     sessionStorage.removeItem('user')

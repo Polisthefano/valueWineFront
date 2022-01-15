@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { TopComponent } from './top/top.component';
 import { SharedModule } from '../shared/shared.module';
 import { PageComponent } from './page.component';
+import { VinosComponent } from './vinos/vinos.component';
 
 
 

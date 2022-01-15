@@ -41,6 +41,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       if (err.error.code == 404) {
         copy = 'Usuario o contraseña incorrectos'
       }
+      else {
+        copy = 'Error al iniciar Sesion, porfavor intentelo mas tarde...'
+      }
       this.toastService.presentToast(copy, 'toastError').then(resp => {
       })
       this.isLoading = false

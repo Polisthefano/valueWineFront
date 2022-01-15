@@ -1,6 +1,6 @@
 <div class="container animate__animated animate__fadeIn">
     <ion-item class="mt-4">
-        <ion-grid>
+        <ion-grid style="border-bottom: 1px solid ;">
             <ion-row class="ion-text-center">
                 <h2 style="width: 100% !important">Bienvenido a ValueWine</h2>
             </ion-row>
@@ -32,7 +32,7 @@
         </ion-grid>
         <ion-grid>
             <ion-row class="alignContent">
-                <ion-button class="pointer" (click)="login()" *ngIf="!isLoading" [disabled]="f.invalid" color="light">Iniciar Sesion</ion-button>
+                <ion-button class="pointer" color="light" (click)="login()" *ngIf="!isLoading" [disabled]="f.invalid">Iniciar Sesion</ion-button>
 
                 <ion-button *ngIf="isLoading" disabled color="light">
                     <ion-icon class="spin iconZoom" name="settings-outline"></ion-icon>
@@ -47,7 +47,7 @@
 
         <ion-row class="alignContent">
 
-            <ion-badge color="primary" (click)="redirect('registro')">Create tu cuenta</ion-badge>
+            <ion-badge class="badge pointer" (click)="redirect('registro')">Create tu cuenta</ion-badge>
         </ion-row>
     </ion-grid>
 </div>
