@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
+    <ion-toolbar class="bg-grey">
         <ion-buttons slot="start">
-            <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+            <ion-back-button text="" color="dark" icon="arrow-back-outline"></ion-back-button>
 
         </ion-buttons>
         <ion-title>Vinos</ion-title>
@@ -9,5 +9,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <h2>Aca iria los vinos del productor</h2>
+    <ion-grid>
+        <ion-row class="alignContent">
+            <h4>Tus vinos</h4>
+        </ion-row>
+        <ion-row>
+            <ion-col size="7">
+                <ion-searchbar placeholder="Busca tu vino"></ion-searchbar>
+            </ion-col>
+            <ion-col size="3">
+                <ion-button color="light">Agregar vino
+                    <ion-icon class="ms-1" name="add-circle-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-list class="mt-5">
+            <ion-item *ngFor="let vino of vinos">{{vino}}</ion-item>
+        </ion-list>
+
+    </ion-grid>
 </ion-content>
