@@ -24,7 +24,14 @@
             </ion-col>
         </ion-row>
         <ion-list class="mt-5">
-            <ion-item *ngFor="let vino of vinos">{{vino}}</ion-item>
+            <ion-list-header lines="inset">
+                <ion-label class="txt-ligth">Nombre Vino</ion-label>
+                <ion-label class="txt-ligth">Puntaje</ion-label>
+            </ion-list-header>
+            <ion-item *ngFor="let vino of vinos">
+                <ion-label>{{vino.Nombre}}</ion-label>
+                <ion-label>{{vino.Quality?vino.Quality:'No asignado'}}</ion-label>
+            </ion-item>
         </ion-list>
 
     </ion-grid>
