@@ -2,23 +2,21 @@
     <ion-toolbar class="bg-grey">
         <ion-buttons slot="start">
             <ion-back-button text="" color="dark" icon="arrow-back-outline"></ion-back-button>
-
         </ion-buttons>
-        <ion-title>Vinos</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
     <ion-grid>
         <ion-row class="alignContent">
-            <h4>Tus vinos</h4>
+            <h2>Tus vinos</h2>
         </ion-row>
         <ion-row>
             <ion-col size="7">
                 <ion-searchbar placeholder="Busca tu vino"></ion-searchbar>
             </ion-col>
             <ion-col size="3">
-                <ion-button color="light">Agregar vino
+                <ion-button color="light" (click)="modalAgregarVino=true">Agregar vino
                     <ion-icon class="ms-1" name="add-circle-outline"></ion-icon>
                 </ion-button>
             </ion-col>
@@ -35,4 +33,6 @@
         </ion-list>
 
     </ion-grid>
+
+    <app-modal [abrirModal]="modalAgregarVino" (closeModal)='modalAgregarVino=false'></app-modal>
 </ion-content>

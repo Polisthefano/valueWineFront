@@ -10,6 +10,7 @@
     --valuewine-color-tertiary: #612940;
     --valuewine-color-other: #9d6381;
     --valuewine-color-other2: #cecccc;
+    --valuewine-color-other3: #ddcfd2;
     /** primary **/
     --ion-color-primary: #3880ff;
     --ion-color-primary-rgb: 56, 128, 255;
@@ -117,7 +118,7 @@
         --ion-color-danger-contrast-rgb: 255, 255, 255;
         --ion-color-danger-shade: #e04055;
         --ion-color-danger-tint: #ff5b71;
-        --ion-color-dark: #f4f5f8;
+        --ion-color-dark: var(--valuewine-color-primary);
         --ion-color-dark-rgb: 244, 245, 248;
         --ion-color-dark-contrast: #000000;
         --ion-color-dark-contrast-rgb: 0, 0, 0;

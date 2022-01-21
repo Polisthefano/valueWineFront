@@ -10,6 +10,7 @@ import { VinoService } from 'src/app/services/vino.service';
   styleUrls: ['./vinos.component.scss'],
 })
 export class VinosComponent implements OnInit {
+  modalAgregarVino: boolean = false
   vinos: any = []
   constructor(private mainService: MainService, private vinoService: VinoService) {
     let usuario: Usuario = this.mainService.sessionStorageGet('user')
@@ -23,5 +24,9 @@ export class VinosComponent implements OnInit {
   }
 
   ngOnInit() { }
+  cerrarModal() {
+    console.log('entro');
 
+    this.modalAgregarVino = false
+  }
 }

@@ -1,0 +1,27 @@
+<ion-modal [isOpen]="abrirModal">
+    <ng-template>
+        <ion-content class="bg-primary">
+            <ion-toolbar class="bg-primary">
+                <ion-buttons slot="end">
+                    <ion-button (click)="cerrarModal()" color="light">CLOSE</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <h3 class="txt-center">Agrega tu vino</h3>
+                        <hr>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+
+                    <h4>Nombre</h4>
+
+                </ion-row>
+                <ion-input formControlName='name' class="input" type="text" placeholder="Ingrese un nombre para su vino">
+                </ion-input>
+
+            </ion-grid>
+        </ion-content>
+    </ng-template>
+</ion-modal>

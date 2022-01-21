@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { VinosComponent } from './vinos.component';
 import { IonicModule } from '@ionic/angular';
 import { VinosRoutingModule } from './vinos-routing.module';
+import { ComponentesModule } from 'src/app/shared/componentes/componentes.module';
+
 
 
 
@@ -11,7 +13,8 @@ import { VinosRoutingModule } from './vinos-routing.module';
   imports: [
     CommonModule,
     IonicModule,
-    VinosRoutingModule
+    VinosRoutingModule,
+    ComponentesModule
   ]
 })
 export class VinosModule { }
