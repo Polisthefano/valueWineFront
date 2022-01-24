@@ -33,6 +33,11 @@
     --background: red;
 }
 
+.toastWarning {
+    --background: rgb(218, 218, 22);
+    color: var(--valuewine-color-secondary) !important;
+}
+
 .toastSucess {
     --background: green;
 }

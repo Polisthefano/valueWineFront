@@ -23,12 +23,24 @@
         </ion-row>
         <ion-list class="mt-5">
             <ion-list-header lines="inset">
-                <ion-label class="txt-ligth">Nombre Vino</ion-label>
-                <ion-label class="txt-ligth">Puntaje</ion-label>
+                <ion-label class="txt-dark">Nombre Vino</ion-label>
+                <ion-label class="txt-dark">Puntaje</ion-label>
+                <ion-label class="txt-dark">Acciones</ion-label>
             </ion-list-header>
             <ion-item *ngFor="let vino of vinos">
-                <ion-label>{{vino.Nombre}}</ion-label>
-                <ion-label>{{vino.Quality?vino.Quality:'No asignado'}}</ion-label>
+                <ion-label class="text-center">{{vino.Nombre}}</ion-label>
+                <ion-label class="text-center">{{vino.Quality?vino.Quality:'No asignado'}}</ion-label>
+                <ion-label class="text-center">
+                    <ion-row>
+                        <ion-col class="text-end">
+                            <ion-icon name="pencil-outline"></ion-icon>
+                        </ion-col>
+                        <ion-col class="text-start">
+                            <ion-icon name="trash-outline" (click)="eliminarVino(vino)"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-label>
             </ion-item>
         </ion-list>
 
