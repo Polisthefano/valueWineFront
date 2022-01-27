@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { filter, take } from 'rxjs/operators';
 import { Usuario } from 'src/app/models/usuario.model';
 import { MainService } from 'src/app/services/main.service';
@@ -13,7 +14,7 @@ import { VinoService } from 'src/app/services/vino.service';
 export class VinosComponent implements OnInit {
   modalAgregarVino: boolean = false
   vinos: any = []
-  constructor(private mainService: MainService, private vinoService: VinoService, public toastService: ToastService) {
+  constructor(private mainService: MainService, private vinoService: VinoService, public toastService: ToastService, private router: Router) {
     let usuario: Usuario = this.mainService.sessionStorageGet('user')
     this.vinoService.getVinosByIdProductor(usuario).then((resp: any) => {
       this.vinos = resp.vinos
@@ -32,13 +33,20 @@ export class VinosComponent implements OnInit {
     this.toastService.presentToastWithOptions('Estas seguro deseas eliminarlo?', 'toastWarning', 'warning-outline').then(resp => {
     })
     this.toastService.eventoBorradoVino.pipe(take(1)).subscribe(resp => {
-      console.log('toco borrar');
       this.vinoService.deleteVino(vinoABorrar.Id).then(res => {
         this.vinos = this.vinos.filter(vino => vino.Id != vinoABorrar.Id)
+        this.toastService.presentToast('Vino Eliminado Correctamente', 'toastSucess').then(resp => { })
+      }).catch(err => {
+        console.log(err);
+        let msg = ''
+        if (err.error.code == 401) {
+          msg = 'Sesion expirada'
+          this.router.navigate(['login'])
+        } else {
+          msg = 'Error al borrar el vino'
+        }
+        this.toastService.presentToast(msg, 'toastError').then(resp => { })
       })
-    }, err => {
-      console.log(err);
-
     })
   }
 }

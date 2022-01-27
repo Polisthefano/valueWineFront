@@ -13,6 +13,7 @@ export class ToastService {
     const toast = await this.toastController.create({
       message: mensaje,
       duration: 4000,
+      animated: true,
       cssClass: clase,
       position: 'top'
     });
@@ -23,24 +24,21 @@ export class ToastService {
       header: titulo,
       message: mensaje,
       cssClass: clase,
+      animated: true,
       icon: icon,
       position: 'top',
       buttons: [
         {
           side: 'start',
+          icon: "close-outline",
           text: 'Borrar',
-          role: 'hola',
-          cssClass: "text-dark",
+
           handler: () => {
             this.eventoBorradoVino.emit()
           }
         }, {
           text: 'Cancelar',
-          cssClass: "txt-dark",
-          role: 'cancel',
-          handler: () => {
-
-          }
+          role: 'cancel'
         }
       ]
     });

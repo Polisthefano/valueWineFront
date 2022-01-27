@@ -30,3 +30,8 @@
 @import '~@ionic/angular/css/flex-utils.css';
 @import '../src/app/shared/globalStyles.scss';
 @import '../src/app/shared/colors.scss';
+::ng-deep {
+    .toast-button {
+        color: var(--valuewine-color-secondary);
+    }
+}
