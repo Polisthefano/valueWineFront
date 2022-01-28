@@ -49,4 +49,10 @@ export class VinosComponent implements OnInit {
       })
     })
   }
+  openAgregarVino() {
+    this.router.navigate(['pages/vinos/addWine'])
+  }
+  volver() {
+    this.router.navigate(['pages'])
+  }
 }

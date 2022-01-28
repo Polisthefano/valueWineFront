@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: PageComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'home',
@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     path: 'vinos',
     loadChildren: () => import('./vinos/vinos.module').then(m => m.VinosModule),
-    canActivate: [ProductorGuard]
+
   }
 ];
 

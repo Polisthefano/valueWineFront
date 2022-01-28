@@ -1,0 +1,148 @@
+<ion-content class="bg-primary animate__animated animate__fadeInDown">
+    <ion-toolbar class="bg-primary"> </ion-toolbar>
+
+    <ion-grid class="mb-2">
+        <form [formGroup]="f">
+            <ion-row>
+                <ion-col style="border-bottom: 1px solid black">
+                    <h2 class="txt-center"><strong>Agrega tu vino</strong></h2>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Nombre</h4>
+                <hr />
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="name" class="inputModal" type="text" placeholder="Ingrese un nombre para su vino">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Tipo de vino</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-select interface="action-sheet" class="inputModal text-center" placeholder="Selecciona una opción" formControlName="tipoVino">
+                        <ion-select-option Value=true>Vino Tinto</ion-select-option>
+                        <ion-select-option Value=false>Vino Blanco</ion-select-option>
+                    </ion-select>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Acidez Volatil</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="VolatileAcidity" class="inputModal" type="number" placeholder="Ingrese un valor para acidez Volatil">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Adicez Fija</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="FixedAcidity" class="inputModal" type="number" placeholder="Ingrese un valor para acidez Fija">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Acido Citrico</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="CitricAcid" class="inputModal" type="number" placeholder="Ingrese un valor para acido citrico">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Azucar Residual</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="Residualsugar" class="inputModal" type="number" placeholder="Ingrese un valor para azucar Residual">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Dioxido de Azufre libre</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="FreeSulfurDioxide" class="inputModal" type="number" placeholder="Ingrese un valor para dioxido de azufre">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Cloruros</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="Chlorides" class="inputModal" type="number" placeholder="Ingrese un valor para cloruros">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Densidad</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="Density" class="inputModal" type="number" placeholder="Ingrese un valor para densidad">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Dioxido de Azufre Total</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="TotalSulfurDioxide" class="inputModal text-center" type="number" placeholder="Ingrese un valor para dioxido de azufre total">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>PH</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="PH" class="inputModal" type="number" placeholder="Ingrese un valor para PH">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Sulfatos</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="Sulphates" class="inputModal" type="number" placeholder="Ingrese un valor para sulfatos">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <h4>Alcohol</h4>
+            </ion-row>
+            <ion-row class="alignContent">
+                <ion-col size="10">
+                    <ion-input formControlName="Alcohol" class="inputModal" type="number" placeholder="Ingrese un valor para alcohol">
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+        </form>
+        <ion-row class="alignContent mt-4">
+            <ion-col size="6">
+                <ion-button class="pointer" color="light" (click)="submit()" *ngIf="!isLoading" [disabled]="f.invalid">Guardar Cambios
+                    <ion-icon class="ms-2 iconZoom" name="save-outline"></ion-icon>
+                </ion-button>
+                <ion-button *ngIf="isLoading" disabled color="light">
+                    <ion-icon class="spin iconZoom" name="settings-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+            <ion-col size="6">
+                <ion-button (click)="backPage()" class="pointer" color="light">Cancelar
+                    <ion-icon class="iconZoom" name="close-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

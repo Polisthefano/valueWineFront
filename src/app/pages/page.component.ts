@@ -10,7 +10,7 @@ import { MainService } from '../services/main.service';
 })
 export class PageComponent implements OnInit {
   usuario: Usuario
-  constructor(private router: Router, private mainService: MainService) {
+  constructor(private router: Router, public mainService: MainService) {
     this.usuario = this.mainService.sessionStorageGet('user')
   }
 

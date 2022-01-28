@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
     <ion-toolbar class="bg-grey">
-        <ion-buttons slot="start">
-            <ion-back-button text="" color="dark" icon="arrow-back-outline"></ion-back-button>
+        <ion-buttons cslot="start">
+            <ion-back-button text="" defaultHref="pages" color="dark" icon="arrow-back-outline"></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="animate__animated animate__fadeIn">
     <ion-grid>
         <ion-row class="alignContent">
             <h2><strong>Tus vinos</strong> </h2>
@@ -16,7 +16,7 @@
                 <ion-searchbar placeholder="Busca tu vino"></ion-searchbar>
             </ion-col>
             <ion-col size="3">
-                <ion-button color="light" (click)="modalAgregarVino=true">Agregar vino
+                <ion-button color="light" (click)="openAgregarVino()">Agregar vino
                     <ion-icon class="ms-1" name="add-circle-outline"></ion-icon>
                 </ion-button>
             </ion-col>
@@ -47,8 +47,5 @@
                 </ion-label>
             </ion-item>
         </ion-list>
-
     </ion-grid>
-
-    <app-modal [abrirModal]="modalAgregarVino" (closeModal)='modalAgregarVino=false'></app-modal>
 </ion-content>
