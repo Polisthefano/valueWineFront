@@ -7,7 +7,7 @@ import { VinoService } from './vino.service';
   providedIn: 'root'
 })
 export class ToastService {
-  eventoBorradoVino: EventEmitter<any> = new EventEmitter()
+  evento: EventEmitter<any> = new EventEmitter()
   constructor(private toastController: ToastController, private vinoService: VinoService) { }
   async presentToast(mensaje: string, clase: string) {
     const toast = await this.toastController.create({
@@ -30,11 +30,10 @@ export class ToastService {
       buttons: [
         {
           side: 'start',
-          icon: "close-outline",
-          text: 'Borrar',
+          text: 'Confirmar',
 
           handler: () => {
-            this.eventoBorradoVino.emit()
+            this.evento.emit()
           }
         }, {
           text: 'Cancelar',

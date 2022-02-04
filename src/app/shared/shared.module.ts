@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { ComponentesModule } from './componentes/componentes.module';
 
 
 
@@ -10,7 +9,6 @@ import { ComponentesModule } from './componentes/componentes.module';
   imports: [
     CommonModule,
     IonicModule,
-    ComponentesModule
   ]
 })
 export class SharedModule { }

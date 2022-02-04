@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { ProductorGuard } from 'src/app/guards/productor.guard';
-import { AgregarEditarVinoComponent } from 'src/app/shared/componentes/AgregarEditarVino/AgregarEditarVino.component';
+import { AgregarEditarVinoComponent } from 'src/app/pages/vinos/AgregarEditarVino/AgregarEditarVino.component';
 import { VinoComponent } from './vino/vino/vino.component';
 import { VinosComponent } from './vinos.component';
 

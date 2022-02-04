@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { VinosComponent } from './vinos.component';
 import { IonicModule } from '@ionic/angular';
 import { VinosRoutingModule } from './vinos-routing.module';
-import { ComponentesModule } from 'src/app/shared/componentes/componentes.module';
+import { AgregarEditarVinoComponent } from './AgregarEditarVino/AgregarEditarVino.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 
 @NgModule({
-  declarations: [VinosComponent],
+  declarations: [VinosComponent, AgregarEditarVinoComponent],
   imports: [
     CommonModule,
     IonicModule,
+    ReactiveFormsModule,
     VinosRoutingModule,
-    ComponentesModule
   ]
 })
 export class VinosModule { }

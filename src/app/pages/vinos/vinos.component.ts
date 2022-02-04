@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { Usuario } from 'src/app/models/usuario.model';
 import { MainService } from 'src/app/services/main.service';
@@ -11,7 +12,8 @@ import { VinoService } from 'src/app/services/vino.service';
   templateUrl: './vinos.component.html',
   styleUrls: ['./vinos.component.scss'],
 })
-export class VinosComponent implements OnInit {
+export class VinosComponent implements OnInit, OnDestroy {
+  sub: Subscription = new Subscription()
   modalAgregarVino: boolean = false
   vinos: any = []
   constructor(private mainService: MainService, private vinoService: VinoService, public toastService: ToastService, private router: Router) {
@@ -23,16 +25,21 @@ export class VinosComponent implements OnInit {
         this.vinos = []
       }
     })
+
   }
 
   ngOnInit() { }
+  ngOnDestroy(): void {
+    console.log('on destroy');
+
+  }
   cerrarModal() {
     this.modalAgregarVino = false
   }
   eliminarVino(vinoABorrar) {
     this.toastService.presentToastWithOptions('Estas seguro deseas eliminarlo?', 'toastWarning', 'warning-outline').then(resp => {
     })
-    this.toastService.eventoBorradoVino.pipe(take(1)).subscribe(resp => {
+    this.toastService.evento.pipe(take(1)).subscribe(resp => {
       this.vinoService.deleteVino(vinoABorrar.Id).then(res => {
         this.vinos = this.vinos.filter(vino => vino.Id != vinoABorrar.Id)
         this.toastService.presentToast('Vino Eliminado Correctamente', 'toastSucess').then(resp => { })
@@ -50,9 +57,29 @@ export class VinosComponent implements OnInit {
     })
   }
   openAgregarVino() {
-    this.router.navigate(['pages/vinos/addWine'])
+    this.router.navigate(['pages/vinos/addWine'], { replaceUrl: true })
   }
-  volver() {
-    this.router.navigate(['pages'])
+
+  generarPuntaje(vino) {
+    this.toastService.presentToastWithOptions('Esta opcion generara un puntaje y pronda su vino disponible en el top', 'toastWarning', 'warning-outline').then(resp => {
+    })
+    this.toastService.evento.pipe(take(1)).subscribe(resp => {
+      this.vinoService.generarPuntaje(vino.Id).then((res: any) => {
+        this.toastService.presentToast('Puntaje Generado Correctamente', 'toastSucess').then(resp => { })
+        let vino = this.vinos.find(v => v.Id == res.vino.Id)
+        let posicion = this.vinos.indexOf(vino)
+        this.vinos[posicion] = res.vino
+      }).catch(err => {
+        console.log(err);
+        let msg = ''
+        if (err.error.code == 401) {
+          msg = 'Sesion expirada'
+          this.router.navigate(['login'])
+        } else {
+          msg = 'Error al predecir el puntaje'
+        }
+        this.toastService.presentToast(msg, 'toastError').then(resp => { })
+      })
+    })
   }
 }

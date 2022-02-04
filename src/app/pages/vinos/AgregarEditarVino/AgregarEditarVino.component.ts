@@ -72,6 +72,6 @@ export class AgregarEditarVinoComponent implements OnInit {
     })
   }
   backPage() {
-    this.router.navigate(['pages/vinos'])
+    this.router.navigateByUrl('pages/vinos', { replaceUrl: true })
   }
 }
