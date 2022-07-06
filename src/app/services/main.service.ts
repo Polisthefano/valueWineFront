@@ -23,7 +23,7 @@ export class MainService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${usuario.Token}`
     })
-    console.log('se pidio');
+
 
     return this.http.get(`${this.url}usuario/checkSesion`, { headers: headers }).pipe(map((user: any) => {
       usuario.Token = user.token

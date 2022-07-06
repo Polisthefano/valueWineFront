@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: PageComponent,
-    canActivate: [AuthGuard]
+
   },
   {
     path: 'home',
