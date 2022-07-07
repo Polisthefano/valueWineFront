@@ -1,12 +1,52 @@
 <ion-header [translucent]="true">
-    <ion-toolbar class="bg-grey">
-        <ion-buttons slot="start">
-            <ion-back-button text="" color="dark" icon="arrow-back-outline"></ion-back-button>
-        </ion-buttons>
-        <ion-title>Top</ion-title>
-    </ion-toolbar>
+  <ion-toolbar class="bg-grey">
+    <ion-buttons slot="start">
+      <ion-back-button
+        text=""
+        color="dark"
+        icon="arrow-back-outline"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Top</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <h2>Aca iria el top</h2>
+  <ion-grid>
+    <ion-row>
+      <h2 class="mt-5">Top 100 vinos ordenados por puntaje</h2>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <table class="w-100 table table-dark mt-2">
+          <thead>
+            <tr class="text-center">
+              <th>Posicion</th>
+              <th>Nombre</th>
+              <th>Puntaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="vinos">
+              <tr *ngFor="let vino of vinos; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ vino.Nombre }}</td>
+                <td>{{ vino.Quality }}</td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="!vinos">
+              <tr>
+                <td colspan="3" class="text-center iconZoom">
+                  <ion-icon
+                    class="spin iconZoom"
+                    name="refresh-outline"
+                  ></ion-icon>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

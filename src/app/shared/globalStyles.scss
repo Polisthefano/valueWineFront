@@ -1,73 +1,79 @@
 .input {
-    border-radius: 10px;
-    text-align: center;
-    background: linear-gradient( 145deg, var(--valuewine-color-primary), var(--valuewine-color-other3));
-    color: black;
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(
+    145deg,
+    var(--valuewine-color-primary),
+    var(--valuewine-color-other3)
+  );
+  color: black;
 }
-
+.iconZoom {
+  zoom: 1.5;
+}
 .alignContent {
-    justify-content: center;
+  justify-content: center;
 }
 
 .is-invalid {
-    border: 5px solid #ff0022;
+  border: 5px solid #ff0022;
 }
 
 .errorsEtiqueta {
-    color: #ff0022;
-    font: bold;
+  color: #ff0022;
+  font: bold;
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .spin {
-    animation-name: rotation;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+  animation-name: rotation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 .toastError {
-    --background: red;
+  --background: red;
 }
 
 .toastWarning {
-    --background: rgb(218, 218, 22);
-    color: var(--valuewine-color-secondary) !important;
-    --button-color: var(--valuewine-color-secondary) !important;
+  --background: rgb(218, 218, 22);
+  color: var(--valuewine-color-secondary) !important;
+  --button-color: var(--valuewine-color-secondary) !important;
 }
 
 .toastSucess {
-    --background: green;
+  --background: green;
 }
 
 ion-menu {
-    --ion-background-color: var(--valuewine-color-primary);
-    ion-item {
-        --background: var(--valuewine-color-primary);
-    }
-    ion-toolbar {
-        --background: var(--valuewine-color-primary);
-    }
+  --ion-background-color: var(--valuewine-color-primary);
+  ion-item {
+    --background: var(--valuewine-color-primary);
+  }
+  ion-toolbar {
+    --background: var(--valuewine-color-primary);
+  }
 }
 
 .txt-center {
-    text-align: center;
+  text-align: center;
 }
 
 .badge {
-    background-color: var(--valuewine-color-other3);
-    color: var(--valuewine-color-secondary);
-    font-size: 14px;
+  background-color: var(--valuewine-color-other3);
+  color: var(--valuewine-color-secondary);
+  font-size: 14px;
 }
 
 @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

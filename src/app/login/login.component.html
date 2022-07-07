@@ -1,52 +1,107 @@
 <div class="container animate__animated animate__fadeIn mt-4">
-    <ion-grid style="border-bottom: 1px solid ;">
-        <ion-row class="ion-text-center">
-            <h2 style="width: 100% !important">Bienvenido a ValueWine</h2>
-        </ion-row>
-        <ion-row class="ion-text-center">
-            <h3 style="width: 100% !important">Iniciar Sesion</h3>
-        </ion-row>
+  <ion-grid style="border-bottom: 1px solid;">
+    <ion-row class="ion-text-center">
+      <h2 style="width: 100% !important;">Bienvenido a ValueWine</h2>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <h3 style="width: 100% !important;">Iniciar Sesion</h3>
+    </ion-row>
+  </ion-grid>
+
+  <form [formGroup]="f">
+    <ion-grid>
+      <ion-item class="mt-5">
+        <ion-label>Email</ion-label>
+        <hr />
+      </ion-item>
+      <ion-input
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            f.controls.email.errors &&
+            (f.controls.email.touched || f.controls.email.dirty)
+        }"
+        class="input"
+        type="text"
+        placeholder="Ingrese su email"
+      ></ion-input>
+      <span
+        class="mt-2 errorsEtiqueta"
+        *ngIf="f.controls.email.errors?.pattern"
+      >
+        El email debe contener un formato abc@ef.gh
+      </span>
+      <span
+        class="mt-2 errorsEtiqueta"
+        *ngIf="
+          f.controls.email.errors?.required &&
+          (f.controls.email.touched || f.controls.email.dirty)
+        "
+      >
+        El email es requerido
+      </span>
     </ion-grid>
-
-    <form [formGroup]="f">
-        <ion-grid>
-            <ion-item class="mt-5">
-                <ion-label> Email </ion-label>
-                <hr />
-            </ion-item>
-            <ion-input formControlName='email' [ngClass]="{'is-invalid': f.controls.email.errors&&(f.controls.email.touched||f.controls.email.dirty)}" class="input" type="text" placeholder="Ingrese su email">
-            </ion-input>
-            <span class="mt-2 errorsEtiqueta" *ngIf="f.controls.email.errors?.pattern">El email debe contener un formato abc@ef.gh</span>
-            <span class="mt-2 errorsEtiqueta" *ngIf="f.controls.email.errors?.required &&(f.controls.email.touched||f.controls.email.dirty)">El email es requerido</span>
-        </ion-grid>
-        <ion-grid>
-            <ion-item class="mt-5">
-                <ion-label> Password </ion-label>
-                <hr />
-            </ion-item>
-            <ion-input formControlName='pass' class="input" [ngClass]="{'is-invalid': f.controls.pass.errors&&(f.controls.pass.touched||f.controls.pass.dirty)}" type="password" placeholder="Ingrese su contraseña">
-            </ion-input>
-            <span class="mt-2 errorsEtiqueta" *ngIf="f.controls.pass.errors?.required &&(f.controls.pass.touched||f.controls.pass.dirty)">La contraseña es requerida</span>
-            <span class="mt-2 errorsEtiqueta" *ngIf="f.controls.pass.errors?.minlength || f.controls.pass.errors?.maxlength ">La contraseña es debe tener entre 6 y 8 caracteres</span>
-        </ion-grid>
-        <ion-grid>
-            <ion-row class="alignContent">
-                <ion-button class="pointer" color="light" (click)="login()" *ngIf="!isLoading" [disabled]="f.invalid">Iniciar Sesion</ion-button>
-
-                <ion-button *ngIf="isLoading" disabled color="light">
-                    <ion-icon class="spin iconZoom" name="settings-outline"></ion-icon>
-                </ion-button>
-            </ion-row>
-        </ion-grid>
-    </form>
-    <ion-grid class="mt-4">
-        <ion-row class="alignContent">
-            <h4>No estas registrado?</h4>
-        </ion-row>
-
-        <ion-row class="alignContent">
-
-            <ion-badge class="badge pointer" (click)="redirect('registro')">Create tu cuenta</ion-badge>
-        </ion-row>
+    <ion-grid>
+      <ion-item class="mt-5">
+        <ion-label>Password</ion-label>
+        <hr />
+      </ion-item>
+      <ion-input
+        formControlName="pass"
+        class="input"
+        [ngClass]="{
+          'is-invalid':
+            f.controls.pass.errors &&
+            (f.controls.pass.touched || f.controls.pass.dirty)
+        }"
+        type="password"
+        placeholder="Ingrese su contraseña"
+      ></ion-input>
+      <span
+        class="mt-2 errorsEtiqueta"
+        *ngIf="
+          f.controls.pass.errors?.required &&
+          (f.controls.pass.touched || f.controls.pass.dirty)
+        "
+      >
+        La contraseña es requerida
+      </span>
+      <span
+        class="mt-2 errorsEtiqueta"
+        *ngIf="
+          f.controls.pass.errors?.minlength || f.controls.pass.errors?.maxlength
+        "
+      >
+        La contraseña es debe tener entre 6 y 8 caracteres
+      </span>
     </ion-grid>
+    <ion-grid>
+      <ion-row class="alignContent">
+        <ion-button
+          class="pointer"
+          color="light"
+          (click)="login()"
+          *ngIf="!isLoading"
+          [disabled]="f.invalid"
+        >
+          Iniciar Sesion
+        </ion-button>
+
+        <ion-button *ngIf="isLoading" disabled color="light">
+          <ion-icon class="spin iconZoom" name="refresh-outline"></ion-icon>
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-grid class="mt-4">
+    <ion-row class="alignContent">
+      <h4>No estas registrado?</h4>
+    </ion-row>
+
+    <ion-row class="alignContent">
+      <ion-badge class="badge pointer" (click)="redirect('registro')">
+        Create tu cuenta
+      </ion-badge>
+    </ion-row>
+  </ion-grid>
 </div>

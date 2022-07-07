@@ -43,4 +43,8 @@ export class VinoService {
     })
     return headers
   }
+  getAllVinos() {
+    let headers = this.getTokenAndGenerateHeader()
+    return this.http.get(`${this.url}/vino/getAllVinos`, { headers: headers }).toPromise()
+  }
 }

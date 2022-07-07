@@ -15,14 +15,14 @@ import { VinoService } from 'src/app/services/vino.service';
 export class VinosComponent implements OnInit, OnDestroy {
   sub: Subscription = new Subscription()
   modalAgregarVino: boolean = false
-  vinos: any = []
+  vinos: any
   constructor(private mainService: MainService, private vinoService: VinoService, public toastService: ToastService, private router: Router) {
     let usuario: Usuario = this.mainService.sessionStorageGet('user')
     this.vinoService.getVinosByIdProductor(usuario).then((resp: any) => {
       this.vinos = resp.vinos
     }).catch(err => {
       if (err.error.code == 404) {
-        this.vinos = []
+        this.vinos = null
       }
     })
 
