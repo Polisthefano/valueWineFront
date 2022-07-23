@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from '../models/usuario.model';
 import { MainService } from '../services/main.service';
@@ -18,8 +18,9 @@ export class PageComponent implements OnInit {
 
   }
 
+
   navigate(path: string) {
-    this.router.navigate([path]);
+    this.router.navigateByUrl(path);
   }
   cerrarSesion() {
     this.mainService.deleteSession()

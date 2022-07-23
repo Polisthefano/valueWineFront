@@ -22,7 +22,7 @@ export class VinosComponent implements OnInit, OnDestroy {
       this.vinos = resp.vinos
     }).catch(err => {
       if (err.error.code == 404) {
-        this.vinos = null
+        this.vinos = []
       }
     })
 

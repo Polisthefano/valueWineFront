@@ -29,13 +29,14 @@ export class ToastService {
       position: 'top',
       buttons: [
         {
-          side: 'start',
+
           text: 'Confirmar',
 
           handler: () => {
             this.evento.emit()
           }
         }, {
+          side: 'start',
           text: 'Cancelar',
           role: 'cancel'
         }

@@ -27,53 +27,50 @@
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-list class="mt-5">
-      <ion-list-header lines="inset">
-        <ion-label class="txt-dark">Nombre Vino</ion-label>
-        <ion-label class="txt-dark">Puntaje</ion-label>
-        <ion-label class="txt-dark">Acciones</ion-label>
-      </ion-list-header>
-      <ng-container *ngIf="vinos">
-        <ion-item *ngFor="let vino of vinos">
-          <ion-label class="text-center">{{ vino.Nombre }}</ion-label>
-          <ion-label class="text-center">
-            {{ vino.Quality ? vino.Quality : 'No asignado' }}
-          </ion-label>
-          <ion-label class="text-center">
-            <ion-row>
-              <ion-col class="text-end">
-                <ion-icon name="pencil-outline"></ion-icon>
-              </ion-col>
-              <ion-col class="text-center">
-                <ion-icon
-                  name="star-outline"
-                  (click)="generarPuntaje(vino)"
-                ></ion-icon>
-              </ion-col>
-              <ion-col class="text-start">
-                <ion-icon
-                  name="trash-outline"
-                  (click)="eliminarVino(vino)"
-                ></ion-icon>
-              </ion-col>
-            </ion-row>
-          </ion-label>
-        </ion-item>
-      </ng-container>
-      <ng-container *ngIf="!vinos">
-        <ion-item>
-          <ion-label>
-            <ion-row>
-              <ion-col size="4" class="text-end" offset="3">
-                <ion-icon
-                  class="spin iconZoom text-center"
-                  name="refresh-outline"
-                ></ion-icon>
-              </ion-col>
-            </ion-row>
-          </ion-label>
-        </ion-item>
-      </ng-container>
-    </ion-list>
+    <table class="w-100 table table-dark mt-2">
+      <thead>
+        <tr class="text-center">
+          <th>Nombre</th>
+          <th>Puntaje</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="vinos && vinos.length > 0">
+          <tr *ngFor="let vino of vinos; let i = index">
+            <td>{{ vino.Nombre }}</td>
+            <td>{{ vino.Quality ? vino.Quality : 'No asignado' }}</td>
+            <td>
+              <ion-row class="">
+                <ion-col class="text-end" size="6">
+                  <ion-icon
+                    name="star-outline"
+                    (click)="generarPuntaje(vino)"
+                  ></ion-icon>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-icon
+                    name="trash-outline"
+                    (click)="eliminarVino(vino)"
+                  ></ion-icon>
+                </ion-col>
+              </ion-row>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="vinos?.length === 0">
+          <tr class="text-center">
+            <td colspan="3">No tienes vinos cargados..</td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="!vinos">
+          <tr>
+            <td colspan="3" class="text-center">
+              <ion-icon class="spin iconZoom" name="refresh-outline"></ion-icon>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
   </ion-grid>
 </ion-content>

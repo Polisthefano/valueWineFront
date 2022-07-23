@@ -14,7 +14,7 @@
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
-      <h2 class="mt-5">Top 100 vinos ordenados por puntaje</h2>
+      <h2 class="mt-5"><strong>100 vinos ordenados por puntaje</strong></h2>
     </ion-row>
     <ion-row>
       <ion-col size="12">
@@ -41,6 +41,13 @@
                     class="spin iconZoom"
                     name="refresh-outline"
                   ></ion-icon>
+                </td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="vinos?.length === 0">
+              <tr>
+                <td colspan="3" class="text-center">
+                  No hay vinos cargados...
                 </td>
               </tr>
             </ng-container>

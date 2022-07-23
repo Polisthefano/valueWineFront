@@ -2,7 +2,7 @@
   <ion-grid class="mb-2">
     <form [formGroup]="f">
       <ion-row>
-        <ion-col style="border-bottom: 1px solid black">
+        <ion-col style="border-bottom: 1px solid black;">
           <h2 class="txt-center"><strong>Agrega tu vino</strong></h2>
         </ion-col>
       </ion-row>
@@ -17,8 +17,7 @@
             class="inputModal"
             type="text"
             placeholder="Ingrese un nombre para su vino"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -47,8 +46,7 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para acidez Volatil"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -61,8 +59,7 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para acidez Fija"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -75,8 +72,7 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para acido citrico"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -89,8 +85,7 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para azucar Residual"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -103,8 +98,7 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para dioxido de azufre"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -117,8 +111,7 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para cloruros"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -131,8 +124,7 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para densidad"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -145,8 +137,7 @@
             class="inputModal text-center"
             type="number"
             placeholder="Ingrese un valor para dioxido de azufre total"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -159,8 +150,7 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para PH"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -173,8 +163,7 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para sulfatos"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -187,12 +176,17 @@
             class="inputModal"
             type="number"
             placeholder="Ingrese un valor para alcohol"
-          >
-          </ion-input>
+          ></ion-input>
         </ion-col>
       </ion-row>
     </form>
     <ion-row class="alignContent mt-4">
+      <ion-col size="6">
+        <ion-button (click)="backPage()" class="pointer" color="light">
+          Cancelar
+          <ion-icon class="iconZoom" name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
       <ion-col size="6">
         <ion-button
           class="pointer"
@@ -200,17 +194,12 @@
           (click)="submit()"
           *ngIf="!isLoading"
           [disabled]="f.invalid"
-          >Guardar Cambios
+        >
+          Guardar Cambios
           <ion-icon class="ms-2 iconZoom" name="save-outline"></ion-icon>
         </ion-button>
         <ion-button *ngIf="isLoading" disabled color="light">
           <ion-icon class="spin iconZoom" name="settings-outline"></ion-icon>
-        </ion-button>
-      </ion-col>
-      <ion-col size="6">
-        <ion-button (click)="backPage()" class="pointer" color="light"
-          >Cancelar
-          <ion-icon class="iconZoom" name="close-outline"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
