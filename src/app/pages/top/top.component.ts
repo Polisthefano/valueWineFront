@@ -12,12 +12,15 @@ export class TopComponent implements OnInit {
   constructor(private vinoService: VinoService) { }
 
   ngOnInit() {
+
+  }
+  ionViewWillEnter() { //on Init de ionic
     this.vinoService.getAllVinos().then((resp: { vinos: Vino[] }) => {
       this.vinos = resp.vinos.filter(v => v.Quality).sort((a, b) => {
         if (a.Quality > b.Quality) {
-          return 1
-        } else if (a.Quality < b.Quality) {
           return -1
+        } else if (a.Quality < b.Quality) {
+          return 1
         } else {
           return 0
         }
@@ -26,6 +29,5 @@ export class TopComponent implements OnInit {
       console.error('Error al traer todos los vinos', err);
     })
   }
-
 
 }

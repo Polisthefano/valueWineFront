@@ -46,7 +46,7 @@ export class VinosComponent implements OnInit, OnDestroy {
         this.vinos = this.vinos.filter(vino => vino.Id != vinoABorrar.Id)
         this.toastService.presentToast('Vino Eliminado Correctamente', 'toastSucess').then(resp => { })
       }).catch(err => {
-        console.log(err);
+        console.error(err);
         let msg = ''
         if (err.error.code == 401) {
           msg = 'Sesion expirada'

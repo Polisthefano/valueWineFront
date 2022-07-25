@@ -32,13 +32,12 @@ export class RegistroComponent implements OnInit {
     }
     let bodyRequest = { 'nombre': this.f.value.name, 'direccion': this.f.value.address, 'rol': this.f.value.rol, 'telefono': this.f.value.phone, 'email': this.f.value.email, 'password': this.f.value.pass }
     this.mainService.createAccount(bodyRequest).then(resp => {
-      console.log(resp);
       this.toastService.presentToast('Usuario Creado Correctamente', 'toastSucess').then(resp => {
       })
       this.isLoading = false
       this.redirectToLogin()
     }).catch(err => {
-      console.log(err);
+      console.error(err);
       this.isLoading = false
       this.toastService.presentToast(`${err.error.msg}`, 'toastError').then(resp => {
       })

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     let bodyRequest = { "email": this.f.value.email, "password": this.f.value.pass }
     this.mainService.login(bodyRequest).then(resp => {
       this.mainService.sessionStorageSet('user', resp)
-      this.toastService.presentToast('Usuario logueado Correctamente', 'toastSucess').then(resp => {
+      this.toastService.presentToast('Datos ingresados correctamente', 'toastSucess').then(resp => {
       })
       this.isLoading = false
       this.redirect('pages')

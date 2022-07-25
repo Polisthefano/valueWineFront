@@ -32,6 +32,7 @@
         <tr class="text-center">
           <th>Nombre</th>
           <th>Puntaje</th>
+          <th>Tipo</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -40,6 +41,7 @@
           <tr *ngFor="let vino of vinos; let i = index">
             <td>{{ vino.Nombre }}</td>
             <td>{{ vino.Quality ? vino.Quality : 'No asignado' }}</td>
+            <td>{{ vino.Redwine == true ? 'Tinto' : 'Blanco' }}</td>
             <td>
               <ion-row class="">
                 <ion-col class="text-end" size="4">
@@ -67,12 +69,12 @@
         </ng-container>
         <ng-container *ngIf="vinos?.length === 0">
           <tr class="text-center">
-            <td colspan="3">No tienes vinos cargados..</td>
+            <td colspan="4">No tienes vinos cargados..</td>
           </tr>
         </ng-container>
         <ng-container *ngIf="!vinos">
           <tr>
-            <td colspan="3" class="text-center">
+            <td colspan="4" class="text-center">
               <ion-icon class="spin iconZoom" name="refresh-outline"></ion-icon>
             </td>
           </tr>
