@@ -30,8 +30,6 @@ export class VinosComponent implements OnInit, OnDestroy {
 
   ngOnInit() { }
   ngOnDestroy(): void {
-    console.log('on destroy');
-
   }
   cerrarModal() {
     this.modalAgregarVino = false
@@ -61,7 +59,7 @@ export class VinosComponent implements OnInit, OnDestroy {
   }
 
   generarPuntaje(vino) {
-    this.toastService.presentToastWithOptions('Esta opcion generara un puntaje y pronda su vino disponible en el top', 'toastWarning', 'warning-outline').then(resp => {
+    this.toastService.presentToastWithOptions('Esta opcion generara un puntaje y pondrá su vino disponible en el top', 'toastWarning', 'warning-outline').then(resp => {
     })
     this.toastService.evento.pipe(take(1)).subscribe(resp => {
       this.vinoService.generarPuntaje(vino.Id).then((res: any) => {

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../models/usuario.model';
 
@@ -12,9 +13,12 @@ export class VinoService {
   url = environment.urlBase;
   constructor(private http: HttpClient) {
   }
-  getVinosByIdProductor(usuario: Usuario) {
+  getVinosByIdProductor(usuario: Usuario, idVinoParticular?: number) {
     let headers = this.getTokenAndGenerateHeader()
-    return this.http.get(`${this.url}/vino/getVinosByIdProductor?idProductor=${usuario.idUsuario}`, { headers: headers }).toPromise()
+    return !idVinoParticular ? this.http.get(`${this.url}/vino/getVinosByIdProductor?idProductor=${usuario.idUsuario}`, { headers: headers }).toPromise()
+      : this.http.get(`${this.url}/vino/getVinosByIdProductor?idProductor=${usuario.idUsuario}`, { headers: headers }).pipe(map((res: any) => {
+        return res.vinos.find(v => v.Id == idVinoParticular)
+      })).toPromise()
   }
   deleteVino(idVino: number) {
     let headers = this.getTokenAndGenerateHeader()

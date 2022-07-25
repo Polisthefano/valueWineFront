@@ -1,11 +1,27 @@
 <ion-content class="bg-primary animate__animated animate__fadeInDown">
   <ion-grid class="mb-2">
+    <ion-row>
+      <ion-col style="border-bottom: 1px solid black;">
+        <h2 class="txt-center">
+          <strong>{{idVinoAEditar?'Edita tu vino':'Agrega tu vino'}}</strong>
+        </h2>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="idVinoAEditar && !vinoAEditar">
+    <ion-row class="d-flex justify-content-center">
+      <ion-icon
+        class="spin"
+        name="refresh-outline"
+        style="height: 50px; width: 50px;"
+      ></ion-icon>
+    </ion-row>
+  </ion-grid>
+  <ion-grid
+    *ngIf="(idVinoAEditar && vinoAEditar)||(!idVinoAEditar)"
+    [ngClass]="{'animate__animated animate__fadeIn':idVinoAEditar && vinoAEditar}"
+  >
     <form [formGroup]="f">
-      <ion-row>
-        <ion-col style="border-bottom: 1px solid black;">
-          <h2 class="txt-center"><strong>Agrega tu vino</strong></h2>
-        </ion-col>
-      </ion-row>
       <ion-row>
         <h4>Nombre</h4>
         <hr />
@@ -184,7 +200,6 @@
       <ion-col size="6">
         <ion-button (click)="backPage()" class="pointer" color="light">
           Cancelar
-          <ion-icon class="iconZoom" name="close-outline"></ion-icon>
         </ion-button>
       </ion-col>
       <ion-col size="6">
@@ -196,10 +211,9 @@
           [disabled]="f.invalid"
         >
           Guardar Cambios
-          <ion-icon class="ms-2 iconZoom" name="save-outline"></ion-icon>
         </ion-button>
         <ion-button *ngIf="isLoading" disabled color="light">
-          <ion-icon class="spin iconZoom" name="settings-outline"></ion-icon>
+          <ion-icon class="spin" name="refresh-outline"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>

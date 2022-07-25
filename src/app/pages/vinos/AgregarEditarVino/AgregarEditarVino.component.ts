@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { Vino } from 'src/app/models/vino.model';
 import { ToastService } from 'src/app/services/toast.service';
 import { VinoService } from 'src/app/services/vino.service';
 
@@ -12,7 +15,9 @@ import { VinoService } from 'src/app/services/vino.service';
 })
 
 export class AgregarEditarVinoComponent implements OnInit {
-
+  sub: Subscription = new Subscription()
+  vinoAEditar: Vino
+  idVinoAEditar: number
   f: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     tipoVino: new FormControl('', [Validators.required]),
@@ -29,10 +34,28 @@ export class AgregarEditarVinoComponent implements OnInit {
     Alcohol: new FormControl('', [Validators.required])
   })
   isLoading: boolean = false
-  constructor(private router: Router, private vinoService: VinoService, private toastService: ToastService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private vinoService: VinoService, private toastService: ToastService) {
+    this.idVinoAEditar = this.route.snapshot.params?.id
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
+  }
+  ionViewWillEnter() {
+    if (this.idVinoAEditar) {
+      this.vinoService.getVinosByIdProductor(JSON.parse(sessionStorage.getItem('user')), this.idVinoAEditar).then((vino: Vino) => {
+        this.vinoAEditar = vino
+        this.f.get('name').setValue(this.vinoAEditar.Nombre)
+      }).catch(err => {
+        console.error('Error al encontrar el vino a editar', err);
+        this.backPage()
+
+      })
+    }
+  }
+
+  ionViewWillLeave() { //on destroy de ionic
+    this.sub.unsubscribe()
   }
 
   submit() {

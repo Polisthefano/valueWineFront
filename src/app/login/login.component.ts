@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.router.navigate([path]);
   }
   ngOnDestroy(): void {
+    // this.f.reset()
+  }
+  ionViewWillLeave() {
     this.f.reset()
   }
   login() {

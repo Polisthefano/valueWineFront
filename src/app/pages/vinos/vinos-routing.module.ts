@@ -22,7 +22,13 @@ const routes: Routes = [
     path: 'addWine',
     component: AgregarEditarVinoComponent,
     canActivate: [ProductorGuard]
+  },
+  {
+    path: 'editWine/:id',
+    component: AgregarEditarVinoComponent,
+    canActivate: [ProductorGuard]
   }
+
 
 ];
 

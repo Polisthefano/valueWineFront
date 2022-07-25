@@ -5,7 +5,7 @@
         <ion-title>Bienvenido</ion-title>
       </ion-toolbar>
       <ion-row class="mt-2 alignContent mb-2 txt-ligth">
-        <h6>{{ usuario.Email }}</h6>
+        <h6>{{ usuario?.Email }}</h6>
       </ion-row>
     </ion-header>
     <ion-content>
@@ -44,7 +44,7 @@
   <ion-card
     (click)="navigate('pages/top')"
     class="card"
-    *ngIf="usuario.Rol == 0"
+    *ngIf="usuario?.Rol == 0"
   >
     <ion-card-header>
       <ion-card-subtitle class="ion-text-start">
@@ -62,7 +62,7 @@
   <ion-card
     (click)="navigate('pages/vinos')"
     class="card"
-    *ngIf="usuario.Rol == 1"
+    *ngIf="usuario?.Rol == 1"
   >
     <ion-card-header>
       <ion-card-subtitle class="ion-text-start">
