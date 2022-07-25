@@ -46,9 +46,10 @@
             class="inputModal text-center"
             placeholder="Selecciona una opción"
             formControlName="tipoVino"
+            [value]="this.f.value.tipoVino"
           >
-            <ion-select-option Value="true">Vino Tinto</ion-select-option>
-            <ion-select-option Value="false">Vino Blanco</ion-select-option>
+            <ion-select-option [value]="true">Vino Tinto</ion-select-option>
+            <ion-select-option [value]="false">Vino Blanco</ion-select-option>
           </ion-select>
         </ion-col>
       </ion-row>

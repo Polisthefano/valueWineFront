@@ -33,6 +33,15 @@ export class VinoService {
     body.idProductor = usuario.idUsuario
     return this.http.put(`${this.url}vino/insertVino`, body, { headers: headers }).toPromise()
   }
+  editVino(body, idVinoAEditar) {
+    let usuario: Usuario = JSON.parse(sessionStorage.getItem('user'))
+    const headers: any = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${usuario.Token}`
+    })
+    body.idProductor = usuario.idUsuario
+    return this.http.patch(`${this.url}vino/edit?id=${idVinoAEditar}`, body, { headers: headers }).toPromise()
+  }
 
   generarPuntaje(idVino: number) {
     let headers = this.getTokenAndGenerateHeader()

@@ -12,8 +12,16 @@ export class TopComponent implements OnInit {
   constructor(private vinoService: VinoService) { }
 
   ngOnInit() {
-    this.vinoService.getAllVinos().then((resp: any) => {
-      this.vinos = resp.vinos
+    this.vinoService.getAllVinos().then((resp: { vinos: Vino[] }) => {
+      this.vinos = resp.vinos.filter(v => v.Quality).sort((a, b) => {
+        if (a.Quality > b.Quality) {
+          return 1
+        } else if (a.Quality < b.Quality) {
+          return -1
+        } else {
+          return 0
+        }
+      })
     }).catch(err => {
       console.error('Error al traer todos los vinos', err);
     })

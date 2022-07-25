@@ -17,6 +17,11 @@ export class VinosComponent implements OnInit, OnDestroy {
   modalAgregarVino: boolean = false
   vinos: any
   constructor(private mainService: MainService, private vinoService: VinoService, public toastService: ToastService, private router: Router) {
+
+
+  }
+  ionViewWillEnter() {
+    this.vinos = null
     let usuario: Usuario = this.mainService.sessionStorageGet('user')
     this.vinoService.getVinosByIdProductor(usuario).then((resp: any) => {
       this.vinos = resp.vinos
@@ -25,7 +30,6 @@ export class VinosComponent implements OnInit, OnDestroy {
         this.vinos = []
       }
     })
-
   }
 
   ngOnInit() { }
